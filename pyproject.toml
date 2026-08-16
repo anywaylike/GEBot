@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphreason-bot"
+version = "0.1.0"
+description = "Graph-guided LLM reasoning for social bot detection"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "networkx>=3.0",
+    "numpy>=1.23",
+    "openai>=1.0",
+    "python-dotenv>=1.0",
+    "scikit-learn>=1.2",
+    "torch>=2.0",
+    "tqdm>=4.65",
+    "transformers>=4.38",
+    "zhipuai>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+graphreason-eval = "graphreason_bot.evaluation:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

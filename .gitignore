@@ -1,0 +1,31 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+
+# Dataset, model, and generated experiment artifacts
+data/*
+!data/README.md
+models/
+outputs/*
+!outputs/.gitkeep
+checkpoints/
+*.jsonl
+
+# Python and tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+.venv/
+venv/
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
