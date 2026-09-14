@@ -1,7 +1,7 @@
 # Release scope
 
 This repository contains the author-maintained implementation of the proposed
-GraphReason-Bot pipeline and local implementations of the Random, Attention,
+GEBot pipeline and local implementations of the Random, Attention,
 MRT, and CISC prompting baselines.
 
 The following materials are deliberately excluded:

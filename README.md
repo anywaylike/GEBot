@@ -1,15 +1,16 @@
-# GraphReason-Bot
+# GEBot
 
-GraphReason-Bot is a training-free framework that constructs compact,
-role-organized graph evidence before frozen large-language-model inference for
-social bot detection. The pipeline combines:
+**GEBot: Graph Evidence for Large Language Model-based Social Bot Detection**
+is a training-free framework that transforms target-centered local graphs into
+compact, decision-relevant structural evidence for frozen-LLM inference. The
+pipeline combines:
 
-1. **WGSE** - controlled graph refinement from user and local-topological
-   similarity;
-2. **SE-HCI** - structural-entropy-guided identification of core-community and
-   bridging evidence; and
-3. **PRKNS** - budget-aware key-neighbor ranking and structured prompt
-   construction.
+1. **Graph Structure Enhancement (WGSE)** - controlled graph refinement from
+   user and local-topological similarity;
+2. **Structural Evidence Organization (SE-HCI)** - structural-entropy-guided
+   identification of core-community and bridging evidence; and
+3. **Evidence Selection and Structured Prompting (PRKNS)** - budget-aware
+   representative-neighbor ranking and prompt construction.
 
 The implementation supports fixed-test evaluation on TwiBot-22 and BotSim-24,
 component and feature ablations, sensitivity/policy analyses, and matched
@@ -54,4 +55,6 @@ collaborators. The project is not yet released under an open-source license.
 
 ## Citation
 
-Citation details will be added after the paper's publication record is final.
+Please cite the paper **“GEBot: Graph Evidence for Large Language Model-based
+Social Bot Detection.”** Complete citation details will be added after the
+publication record is final.

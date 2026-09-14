@@ -1,4 +1,4 @@
-"""Runtime configuration for the reproducible GraphReason-Bot package.
+"""Runtime configuration for the reproducible GEBot package.
 
 No credentials are stored in this repository.  Supply provider credentials via
 environment variables or a local ``.env`` file that is excluded by git.

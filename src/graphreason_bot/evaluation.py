@@ -1,5 +1,5 @@
 """
-GraphReason-Bot unified evaluation entry.
+GEBot unified evaluation entry.
 
 PyCharm: run this file directly. By default it evaluates both fixed test sets.
 Command line examples:
@@ -922,7 +922,7 @@ def run_suite(args: argparse.Namespace) -> Dict[str, Any]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="GraphReason-Bot community-enhanced LLM bot detection"
+        description="GEBot structural-evidence LLM social bot detection"
     )
     parser.add_argument(
         "--dataset", choices=["all", *cfg.DATASET_PATHS],
