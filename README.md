@@ -43,15 +43,34 @@ python -m graphreason_bot.evaluation --dataset all --validate_only
 Place the prepared datasets locally as described in [data/README.md](data/README.md),
 then follow the commands in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md).
 
+## Data availability
+
+This repository does **not** distribute TwiBot-22, BotSim-24, the balanced
+1,000-user evaluation cohorts used in our experiments, their user identifiers,
+or any processed records derived from them. Obtain the original datasets from
+their official repositories and follow the respective access and license terms:
+
+- [TwiBot-22 official repository](https://github.com/LuoUndergradXJTU/TwiBot-22)
+- [BotSim official repository](https://github.com/QQQQQQBY/BotSim), including
+  the [BotSim-24 dataset instructions](https://github.com/QQQQQQBY/BotSim/blob/main/BotSim-24-Dataset/Readme.md)
+
+After downloading an authorized copy, prepare the local file layout described
+in [data/README.md](data/README.md). The repository includes deterministic
+sampling support (default: 1,000 users, balanced as 500 bots and 500 humans,
+seed 2026), but the exact cohort files and selected account IDs remain private
+and are excluded from Git.
+
 ## Security and release status
 
-This is a **private research repository**. It contains no credentials, access
-identifiers, data, local model weights, generated outputs, checkpoints, or
-third-party vendor snapshots. Credentials are loaded only from environment
-variables or a local `.env` file that is excluded from version control.
+This is a **public research-code repository**. It contains no credentials,
+access identifiers, datasets, selected user cohorts, local model weights,
+generated outputs, checkpoints, or third-party vendor snapshots. Credentials
+are loaded only from environment variables or a local `.env` file that is
+excluded from version control.
 
 See [SECURITY.md](SECURITY.md) before sharing branches or inviting
-collaborators. The project is not yet released under an open-source license.
+collaborators. Public access does not grant an open-source license; the project
+remains all-rights-reserved unless a license is added explicitly.
 
 ## Citation
 

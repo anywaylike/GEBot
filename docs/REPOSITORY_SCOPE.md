@@ -9,7 +9,7 @@ The following materials are deliberately excluded:
 | Material | Reason |
 | --- | --- |
 | Provider credentials and access identifiers | Security |
-| Raw/preprocessed datasets and selected cohorts | Dataset terms, privacy review, and reproducibility control |
+| Raw/preprocessed datasets, user IDs, and the selected 1,000-user cohorts | Dataset terms, privacy review, and reproducibility control |
 | Local transformer weights | Size and upstream model licensing |
 | Results, checkpoints, logs, prompts, and LLM responses | They may contain user records or private experimental evidence |
 | `baselines/vendor/` snapshots | Third-party code must be obtained from its original source and used under its own license |

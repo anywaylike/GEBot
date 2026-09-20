@@ -9,6 +9,8 @@
 # Dataset, model, and generated experiment artifacts
 data/*
 !data/README.md
+**/selected_1000.json
+**/*selected*1000*
 models/
 outputs/*
 !outputs/.gitkeep
