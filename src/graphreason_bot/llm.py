@@ -75,11 +75,11 @@ def _get_client(model_name: str):
             timeout=LLM_TIMEOUT,
         ), GPT_MODEL
     elif model_name == "DeepSeek":
-        if not OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY or JENIYA_API_KEY is not set")
+        if not DEEPSEEK_API_KEY:
+            raise ValueError("DEEPSEEK_API_KEY is not set")
         return OpenAI(
-            api_key=OPENAI_API_KEY,
-            base_url=OPENAI_BASE_URL,
+            api_key=DEEPSEEK_API_KEY,
+            base_url=DEEPSEEK_BASE_URL,
             timeout=LLM_TIMEOUT,
         ), DEEPSEEK_MODEL
     elif model_name == "ZhipuAI":
@@ -92,7 +92,7 @@ def _get_client(model_name: str):
         # Any other model name is treated as an OpenAI-compatible model id
         # served by OPENAI_BASE_URL, e.g. "gpt-5.4-mini".
         if not OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY or JENIYA_API_KEY is not set")
+            raise ValueError("OPENAI_API_KEY is not set")
         return OpenAI(
             api_key=OPENAI_API_KEY,
             base_url=OPENAI_BASE_URL,
@@ -115,6 +115,8 @@ def _call_llm(prompt: str, model_name: str,
                     messages=[{"role": "user", "content": prompt}],
                     temperature=temperature,
                 )
+            elif model_name == "DeepSeek":
+                response = _call_deepseek(client, model, prompt)
             else:
                 response = client.chat.completions.create(
                     model=model,

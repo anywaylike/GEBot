@@ -27,21 +27,75 @@ data/
 │   ├── community_format/test.json
 │   └── selected_1000.json             # optional; local/private only
 └── BotSim-24/
+    ├── processed/train.json              # original-pool sampling
     ├── processed/test.json
-    └── selected_1000.json             # optional; local/private only
+    └── selected_1000.json                 # optional; local/private only
 ```
 
 Convert the authorized upstream copies into the JSON structures expected by
 `src/graphreason_bot/data_loader.py`, preserving the original labels and graph
-relationships. The main paper protocol uses the fixed test files
-(`community_format/test.json` and `processed/test.json`). For analyses that
-sample from the original pools, the included sampling code defaults to 1,000
-users balanced as 500 bots and 500 humans with seed 2026.
+relationships. The fixed-test pathway reads `community_format/test.json` and
+`processed/test.json`. Original-pool BotSim-24 sampling combines its prepared
+`train.json` and `test.json`, because the standard test split contains only 200
+bot accounts.
+
+Each top-level JSON value may be a list of records or an object keyed by target
+ID. Every record must contain `target_id` (or `ID`). A `bot` or `human` label
+may appear at the record's top level or on the target node inside
+`community.nodes`. Graph context can be represented either as a `community`
+object or as `follower`/`following` first-hop objects. A minimal synthetic
+community record looks like this:
+
+```json
+{
+  "target_id": "synthetic-target",
+  "label": "bot",
+  "description": "synthetic account",
+  "followers_count": 10,
+  "following_count": 5,
+  "tweet_count": 20,
+  "community": {
+    "nodes": {
+      "synthetic-target": {"is_target": true, "label": "bot"},
+      "synthetic-neighbor": {
+        "is_target": false,
+        "description": "synthetic neighbor",
+        "followers_count": 2,
+        "following_count": 3,
+        "tweet_count": 4
+      }
+    },
+    "edges": [["synthetic-target", "synthetic-neighbor"]]
+  }
+}
+```
+
+The loader also accepts `follower.first_hop` and `following.first_hop` maps;
+see `src/graphreason_bot/data_loader.py` for the precise compatibility logic.
+An end-to-end converter from every upstream release is not currently included,
+so record the upstream release and any local field conversion used. Exact
+preprocessing reproduction is not claimed without that information.
+
+## Create a deterministic local cohort
+
+After both authorized datasets have been prepared, generate balanced local
+cohorts of 1,000 users (500 bots and 500 humans, seed 2026):
+
+```bash
+python -m graphreason_bot.prepare_cohort --dataset all
+```
+
+Use `--sample-seed`, `--sample-size`, or `--unbalanced-sample` to change the
+protocol. Existing files are protected unless `--overwrite` is supplied. The
+generated records remain under `data/` and are ignored by Git.
 
 The exact paper cohorts, including `selected_1000.json` and their account IDs,
-are intentionally not released. Do not commit those files, derived user
-records, prompts, cached responses, or outputs. The repository's `.gitignore`
-keeps everything under `data/` private except this README.
+are intentionally not released. A newly generated deterministic cohort is a
+transparent alternative, not a guarantee of byte-identical reproduction when
+the upstream data or preprocessing revision differs. Do not commit those
+files, derived user records, prompts, cached responses, or outputs. The
+repository's `.gitignore` keeps everything under `data/` private except this
+README.
 
 Set `GRAPHREASON_DATA_ROOT` when the files live outside this repository.
 Respect each dataset's original license, terms of use, and any platform-data

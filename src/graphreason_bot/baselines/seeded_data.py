@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
 from graphreason_bot.config import DATA_ROOT
+from graphreason_bot.data_loader import extract_label
 
 
 
@@ -26,6 +27,9 @@ def item_id(item: Dict[str, Any]) -> str:
 
 
 def item_label(dataset: str, item: Dict[str, Any]) -> str:
+    label = extract_label(item)
+    if label in {"bot", "human"}:
+        return label
     if dataset == "twibot-22":
         target_id = item_id(item)
         label = (
@@ -34,8 +38,6 @@ def item_label(dataset: str, item: Dict[str, Any]) -> str:
             .get(target_id, {})
             .get("label")
         )
-    else:
-        label = item.get("label")
     return str(label or "unknown").lower()
 
 

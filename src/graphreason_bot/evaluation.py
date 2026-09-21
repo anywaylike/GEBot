@@ -71,11 +71,11 @@ def _validate_model_configuration(model_name: str) -> None:
     if model_name == "ZhipuAI" and not cfg.ZHIPUAI_API_KEY:
         raise ValueError("ZHIPUAI_API_KEY is not set")
     if model_name == "DeepSeek":
-        if not cfg.OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY or JENIYA_API_KEY is not set")
+        if not cfg.DEEPSEEK_API_KEY:
+            raise ValueError("DEEPSEEK_API_KEY is not set")
     if model_name not in {"GPT", "DeepSeek", "ZhipuAI"}:
         if not cfg.OPENAI_API_KEY:
-            raise ValueError("OPENAI_API_KEY or JENIYA_API_KEY is not set")
+            raise ValueError("OPENAI_API_KEY is not set")
 
 
 def _extract_target_info(item: Dict[str, Any]) -> Dict[str, Any]:

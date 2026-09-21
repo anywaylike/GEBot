@@ -25,6 +25,7 @@ dev = ["pytest>=7.0"]
 
 [project.scripts]
 gebot-eval = "graphreason_bot.evaluation:main"
+gebot-prepare-cohort = "graphreason_bot.prepare_cohort:main"
 graphreason-eval = "graphreason_bot.evaluation:main"
 
 [tool.setuptools.packages.find]

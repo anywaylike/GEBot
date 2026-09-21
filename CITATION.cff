@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use GEBot in your research, please cite this software."
+type: software
+title: "GEBot: Graph Evidence for Large Language Model-based Social Bot Detection"
+version: 0.1.0
+authors:
+  - family-names: Xie
+    given-names: Yuetao
+  - family-names: Jiang
+    given-names: Shengyue
+  - family-names: Xu
+    given-names: Xiao-Ke
+repository-code: "https://github.com/anywaylike/GEBot"
+url: "https://github.com/anywaylike/GEBot"
+abstract: >-
+  A training-free framework that converts target-centered local graphs into
+  compact structural evidence for social bot detection with frozen large
+  language models.
+keywords:
+  - social bot detection
+  - large language models
+  - graph reasoning
+  - structural entropy
